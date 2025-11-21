@@ -35,6 +35,7 @@ public class Sort_10 {
             }else{
                 rt = mid;
             }
+            System.out.println(lt + " " + rt + " " + mid + " " + cnt);
         }
         System.out.println(lt);
     }
