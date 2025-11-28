@@ -4,7 +4,11 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+!
 
+### 스프링 설정 파일 무시 ###
+application.properties
+application.yml
 ### STS ###
 .apt_generated
 .classpath
