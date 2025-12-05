@@ -3,6 +3,7 @@ package hello.file_practice.service;
 import static org.junit.jupiter.api.Assertions.*;
 
 import hello.file_practice.domain.UploadFile;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -23,7 +24,7 @@ class FileStoreTest {
     }
 
     @Test
-    void storeFileSuccess() {
+    void storeFileSuccess() throws IOException {
         MockMultipartFile file = new MockMultipartFile("file", "test.png", "image/png", "file content".getBytes(
                 StandardCharsets.UTF_8));
         UploadFile uploadFile = fileStore.storeFile(file);
@@ -32,7 +33,7 @@ class FileStoreTest {
     }
 
     @Test
-    void storeFileFail() {
+    void storeFileFail() throws IOException {
         MockMultipartFile file = new MockMultipartFile("file", "test.png", "text/plain", new byte[0]);
         UploadFile uploadFile = fileStore.storeFile(file);
         Assertions.assertThat(uploadFile).isNull();

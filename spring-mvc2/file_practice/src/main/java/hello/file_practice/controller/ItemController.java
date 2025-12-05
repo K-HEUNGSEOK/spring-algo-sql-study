@@ -4,6 +4,7 @@ import hello.file_practice.domain.Item;
 import hello.file_practice.domain.ItemRepository;
 import hello.file_practice.domain.UploadFile;
 import hello.file_practice.service.FileStore;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.List;
 import lombok.Getter;
@@ -33,7 +34,7 @@ public class ItemController {
         return "item-form";
     }
     @PostMapping("/items/new")
-    public String save(@ModelAttribute ItemForm itemForm, RedirectAttributes redirectAttributes){
+    public String save(@ModelAttribute ItemForm itemForm, RedirectAttributes redirectAttributes) throws IOException {
         UploadFile uploadFile = fileStore.storeFile(itemForm.getAttachFile());
         List<UploadFile> uploadFiles = fileStore.storeFiles(itemForm.getImageFiles());
         Item item = new Item();
